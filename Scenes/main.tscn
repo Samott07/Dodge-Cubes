@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://b36yjvlycf8pp"]
+
+[ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://d050weffapbh0" path="res://Scenes/enemy.tscn" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://cfyxghlikdqgy" path="res://UI/button.png" id="4_21xkr"]
+[ext_resource type="AudioStream" uid="uid://etie7w4ixkjw" path="res://Sounds/death.wav.wav" id="4_kry3j"]
+[ext_resource type="AudioStream" uid="uid://dv4gje5k5ttdt" path="res://Sounds/start.wav.wav" id="5_21xkr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gbba"]
+font_size = 64
+
+[node name="Main" type="Node2D" unique_id=101271093]
+script = ExtResource("1_8gbba")
+enemy_scene = ExtResource("2_bo1nx")
+
+[node name="Player" parent="." unique_id=395803764 instance=ExtResource("1_jjgbg")]
+position = Vector2(630, 670)
+
+[node name="Timer" type="Timer" parent="." unique_id=1994380008]
+autostart = true
+
+[node name="ground" type="ColorRect" parent="." unique_id=1263634286]
+offset_top = 710.0
+offset_right = 1280.0
+offset_bottom = 750.0
+color = Color(0, 1, 0, 1)
+
+[node name="leftwall" type="ColorRect" parent="." unique_id=955956063]
+offset_right = 20.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="rightwall" type="ColorRect" parent="." unique_id=877113045]
+offset_left = 1260.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1309930869]
+
+[node name="Score" type="Label" parent="CanvasLayer" unique_id=505029539]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+text = "0"
+
+[node name="BestScore" type="Label" parent="CanvasLayer" unique_id=1511873569]
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 72.0
+offset_bottom = 100.0
+text = "Best: 0"
+
+[node name="GameOver" type="Label" parent="CanvasLayer" unique_id=1367594851]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -34.5
+offset_right = 143.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_8gbba")
+
+[node name="versão do jogo" type="Label" parent="CanvasLayer" unique_id=399677975]
+offset_left = 1200.0
+offset_top = 20.0
+offset_right = 1240.0
+offset_bottom = 43.0
+text = "V1.1"
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=575609865]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="leftbutton" type="TouchScreenButton" parent="CanvasLayer/Control" unique_id=2013062913]
+position = Vector2(35, 520)
+texture_normal = ExtResource("4_21xkr")
+action = "ui_left"
+
+[node name="rightbutton" type="TouchScreenButton" parent="CanvasLayer/Control" unique_id=1031015808]
+position = Vector2(1070, 520)
+texture_normal = ExtResource("4_21xkr")
+action = "ui_right"
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=117190587]
+stream = ExtResource("4_kry3j")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=555822763]
+stream = ExtResource("5_21xkr")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
