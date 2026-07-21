@@ -69,13 +69,6 @@ grow_vertical = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_8gbba")
 
-[node name="versão do jogo" type="Label" parent="CanvasLayer" unique_id=399677975]
-offset_left = 1200.0
-offset_top = 20.0
-offset_right = 1240.0
-offset_bottom = 43.0
-text = "V1.1"
-
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=575609865]
 layout_mode = 3
 anchors_preset = 0

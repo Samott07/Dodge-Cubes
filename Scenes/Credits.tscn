@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bumtaamguc54m"]
+
+[ext_resource type="Script" uid="uid://bfxj8uwo5qlmg" path="res://Scenes/credits.gd" id="1_i8h6y"]
+
+[node name="Credits" type="Control" unique_id=226149913]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i8h6y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=159541499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3529412, 0.5529412, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1201346888]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CREDITS" type="Label" parent="VBoxContainer" unique_id=674899013]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "CREDITS"
+
+[node name="DEV" type="Label" parent="VBoxContainer" unique_id=1504510999]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Developer:
+Samot07
+"
+
+[node name="made" type="Label" parent="VBoxContainer" unique_id=1970815123]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Made with:
+Godot 4.6
+"
+
+[node name="Thanks" type="Label" parent="VBoxContainer" unique_id=1610536311]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Thanks for playing!"
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer" unique_id=1939882565]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "BACK"
+
+[connection signal="pressed" from="VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

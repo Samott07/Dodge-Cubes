@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dodge-Cubes"
-run/main_scene="uid://b36yjvlycf8pp"
+run/main_scene="uid://hhr7i74hku78"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
