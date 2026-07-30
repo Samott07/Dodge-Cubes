@@ -85,6 +85,46 @@ position = Vector2(1070, 520)
 texture_normal = ExtResource("4_21xkr")
 action = "ui_right"
 
+[node name="PauseButton" type="Button" parent="CanvasLayer" unique_id=459718301]
+process_mode = 3
+offset_left = 1220.0
+offset_top = 20.0
+offset_right = 1260.0
+offset_bottom = 60.0
+text = "⏸"
+
+[node name="PauseMenu" type="Panel" parent="CanvasLayer" unique_id=562424250]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=1921509041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=533479836]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=1359833421]
+layout_mode = 2
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=1662875138]
+layout_mode = 2
+text = "MAIN MENU"
+
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=117190587]
 stream = ExtResource("4_kry3j")
 
@@ -92,3 +132,6 @@ stream = ExtResource("4_kry3j")
 stream = ExtResource("5_21xkr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
