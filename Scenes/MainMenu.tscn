@@ -50,6 +50,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
 
+[node name="tutorial" type="Button" parent="VBoxContainer" unique_id=108350109]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "TUTORIAL"
+
 [node name="ButtonExitButton" type="Button" parent="VBoxContainer" unique_id=152377590]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
@@ -62,8 +67,9 @@ text = "CREDITOS"
 
 [node name="Versão do jogo" type="Label" parent="VBoxContainer" unique_id=227731937]
 layout_mode = 2
-text = "v1.2"
+text = "v1.2.1"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonExitButton" to="." method="_on_button_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]

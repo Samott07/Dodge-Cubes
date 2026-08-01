@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scenes/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d050weffapbh0" path="res://Scenes/enemy.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://d7nimwiftuqv" path="res://Scenes/mystery_block.tscn" id="3_6bp64"]
 [ext_resource type="Texture2D" uid="uid://cfyxghlikdqgy" path="res://UI/button.png" id="4_21xkr"]
 [ext_resource type="AudioStream" uid="uid://etie7w4ixkjw" path="res://Sounds/death.wav.wav" id="4_kry3j"]
 [ext_resource type="AudioStream" uid="uid://dv4gje5k5ttdt" path="res://Sounds/start.wav.wav" id="5_21xkr"]
@@ -13,6 +14,7 @@ font_size = 64
 [node name="Main" type="Node2D" unique_id=101271093]
 script = ExtResource("1_8gbba")
 enemy_scene = ExtResource("2_bo1nx")
+mystery_scene = ExtResource("3_6bp64")
 
 [node name="Player" parent="." unique_id=395803764 instance=ExtResource("1_jjgbg")]
 position = Vector2(630, 670)
@@ -69,6 +71,15 @@ grow_vertical = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_8gbba")
 
+[node name="EffectLabel" type="Label" parent="CanvasLayer" unique_id=216577942]
+visible = false
+offset_left = 520.0
+offset_top = 120.0
+offset_right = 560.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=575609865]
 layout_mode = 3
 anchors_preset = 0
@@ -114,15 +125,17 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=533479836]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 100
 text = "PAUSED"
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=1359833421]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "RESTART"
 
 [node name="MainMenuButton" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=1662875138]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "MAIN MENU"
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=117190587]
@@ -131,7 +144,12 @@ stream = ExtResource("4_kry3j")
 [node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=555822763]
 stream = ExtResource("5_21xkr")
 
+[node name="MysteryTimer" type="Timer" parent="." unique_id=1843085854]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="timeout" from="MysteryTimer" to="." method="_on_mystery_timer_timeout"]
