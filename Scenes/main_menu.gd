@@ -10,4 +10,4 @@ func _on_creditos_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Credits.tscn")
 func _on_tutorial_pressed():
 
-	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
+	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
