@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dm30kqb2niapv"]
+
+[ext_resource type="Script" uid="uid://b3rmw4bopdcxa" path="res://Scripts/alien_mystery.gd" id="1_sceav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0np2p"]
+size = Vector2(50, 50)
+
+[node name="AlienMystery" type="Area2D" unique_id=608593728]
+script = ExtResource("1_sceav")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1579274728]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-25, 25, 25, 25, 25, -25, -25, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627503594]
+shape = SubResource("RectangleShape2D_0np2p")
+
+[node name="QuestionMark" type="Label" parent="." unique_id=1366650006]
+offset_left = -9.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 36
+text = "?"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
