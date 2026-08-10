@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://biwgxxys1jp78"]
+
+[ext_resource type="Script" uid="uid://ddrc51u2cauca" path="res://Scripts/alien.gd" id="1_mdm8w"]
+
+[node name="Alien" type="Node2D" unique_id=341596201]
+script = ExtResource("1_mdm8w")
+
+[node name="Body" type="Polygon2D" parent="." unique_id=1405341130]
+color = Color(1.6364455e-06, 0.9329222, 0, 1)
+polygon = PackedVector2Array(-33, -20, 40, -20, 40, 15, -33, 15)
+
+[node name="Base" type="Polygon2D" parent="." unique_id=305931726]
+color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+polygon = PackedVector2Array(-50, 10, 50, 10, 50, 35, -50, 35)
+
+[node name="lefteye" type="Polygon2D" parent="." unique_id=1585102255]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-6, -9, -22, -16, -25, -10, -10, -3)
+
+[node name="righteye" type="Polygon2D" parent="." unique_id=964816701]
+position = Vector2(38, 2)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-21.46748, -4.4156537, -5.7479267, -12.024572, -8.357521, -18.20438, -23.427073, -11.355394)

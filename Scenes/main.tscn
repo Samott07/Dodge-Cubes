@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b36yjvlycf8pp"]
 
-[ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d050weffapbh0" path="res://Scenes/enemy.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://d7nimwiftuqv" path="res://Scenes/mystery_block.tscn" id="3_6bp64"]
@@ -40,6 +40,25 @@ offset_bottom = 720.0
 color = Color(0.31426468, 0.16589037, 0.041016854, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1309930869]
+
+[node name="AlienEventLabel" type="Label" parent="CanvasLayer" unique_id=1446097479]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -59.5
+offset_right = 136.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "👽
+ALIEN EVENT!"
+horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="CanvasLayer" unique_id=505029539]
 offset_left = 20.0
@@ -149,8 +168,11 @@ stream = ExtResource("5_21xkr")
 wait_time = 10.0
 autostart = true
 
+[node name="AlienTimer" type="Timer" parent="." unique_id=746137241]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="timeout" from="MysteryTimer" to="." method="_on_mystery_timer_timeout"]
+[connection signal="timeout" from="AlienTimer" to="." method="_on_alien_timer_timeout"]
