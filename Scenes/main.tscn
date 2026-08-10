@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b36yjvlycf8pp"]
 
-[ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://b3vhwvint6x3s" path="res://Scenes/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://d050weffapbh0" path="res://Scenes/enemy.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://d7nimwiftuqv" path="res://Scenes/mystery_block.tscn" id="3_6bp64"]
@@ -80,24 +80,6 @@ offset_bottom = 143.0
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 
-[node name="AlienEventLabel" type="Label" parent="CanvasLayer" unique_id=340534780]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -24.5
-offset_right = 52.0
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 42
-text = "👽
-ALIEN EVENT!"
-horizontal_alignment = 1
-
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=575609865]
 layout_mode = 3
 anchors_preset = 0
@@ -167,13 +149,8 @@ stream = ExtResource("5_21xkr")
 wait_time = 10.0
 autostart = true
 
-[node name="AlienTimer" type="Timer" parent="." unique_id=623238258]
-one_shot = true
-autostart = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="timeout" from="MysteryTimer" to="." method="_on_mystery_timer_timeout"]
-[connection signal="timeout" from="AlienTimer" to="." method="_on_alien_timer_timeout"]
