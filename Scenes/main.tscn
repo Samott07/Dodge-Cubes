@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d050weffapbh0" path="res://Scenes/enemy.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://d7nimwiftuqv" path="res://Scenes/mystery_block.tscn" id="3_6bp64"]
 [ext_resource type="Texture2D" uid="uid://cfyxghlikdqgy" path="res://UI/button.png" id="4_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bn0e8mx014t8g" path="res://Scenes/shop_event.tscn" id="4_344ge"]
 [ext_resource type="AudioStream" uid="uid://etie7w4ixkjw" path="res://Sounds/death.wav.wav" id="4_kry3j"]
 [ext_resource type="AudioStream" uid="uid://dv4gje5k5ttdt" path="res://Sounds/start.wav.wav" id="5_21xkr"]
 
@@ -15,6 +16,7 @@ font_size = 64
 script = ExtResource("1_8gbba")
 enemy_scene = ExtResource("2_bo1nx")
 mystery_scene = ExtResource("3_6bp64")
+shop_scene = ExtResource("4_344ge")
 
 [node name="Player" parent="." unique_id=395803764 instance=ExtResource("1_jjgbg")]
 position = Vector2(630, 670)
@@ -40,6 +42,13 @@ offset_bottom = 720.0
 color = Color(0.31426468, 0.16589037, 0.041016854, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1309930869]
+
+[node name="CoinsLabel" type="Label" parent="CanvasLayer" unique_id=791034285]
+offset_left = 20.0
+offset_top = 65.0
+offset_right = 81.0
+offset_bottom = 88.0
+text = "Coins: 0"
 
 [node name="AlienEventLabel" type="Label" parent="CanvasLayer" unique_id=1446097479]
 visible = false
@@ -158,6 +167,63 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "MAIN MENU"
 
+[node name="ShopQuestion" type="Panel" parent="CanvasLayer" unique_id=1698490925]
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopQuestion" unique_id=1749803780]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = -132.0
+offset_right = 225.0
+offset_bottom = -82.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Want to go to the Shop?"
+
+[node name="YesButton" type="Button" parent="CanvasLayer/ShopQuestion" unique_id=238841337]
+layout_mode = 0
+offset_left = -115.0
+offset_top = -20.0
+offset_right = -63.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 26
+text = "YES"
+
+[node name="NoButton" type="Button" parent="CanvasLayer/ShopQuestion" unique_id=1417263957]
+layout_mode = 0
+offset_left = 115.0
+offset_top = -20.0
+offset_right = 164.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 26
+text = "NO"
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/ShopQuestion" unique_id=2005588560]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=117190587]
 stream = ExtResource("4_kry3j")
 
@@ -170,9 +236,23 @@ autostart = true
 
 [node name="AlienTimer" type="Timer" parent="." unique_id=746137241]
 
+[node name="ShopTimer" type="Timer" parent="." unique_id=631688703]
+
+[node name="CoinTimer" type="Timer" parent="." unique_id=2074496111]
+wait_time = 10.0
+autostart = true
+
+[node name="StoryTimer" type="Timer" parent="." unique_id=137055101]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopQuestion/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopQuestion/NoButton" to="." method="_on_no_button_pressed"]
 [connection signal="timeout" from="MysteryTimer" to="." method="_on_mystery_timer_timeout"]
 [connection signal="timeout" from="AlienTimer" to="." method="_on_alien_timer_timeout"]
+[connection signal="timeout" from="ShopTimer" to="." method="_on_shop_timer_timeout"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]

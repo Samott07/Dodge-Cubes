@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bn0e8mx014t8g"]
+
+[ext_resource type="Script" uid="uid://di0f0f2yn4gb3" path="res://Scripts/shop_event.gd" id="1_idskx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lm8g"]
+size = Vector2(67, 62)
+
+[node name="ShopEvent" type="Area2D" unique_id=1254485029]
+script = ExtResource("1_idskx")
+
+[node name="wall" type="Polygon2D" parent="." unique_id=1679008615]
+position = Vector2(-18, 3)
+polygon = PackedVector2Array(20, -2, 20, 60, 87, 60, 87, -2)
+
+[node name="door" type="Polygon2D" parent="." unique_id=1956740266]
+position = Vector2(-236, -53)
+color = Color(0.89771587, 0.47983515, 5.7756904e-07, 1)
+polygon = PackedVector2Array(283, 90, 283, 116, 262, 116, 262, 90)
+
+[node name="fechadura" type="Polygon2D" parent="." unique_id=316984175]
+position = Vector2(-138.34998, -52.999992)
+scale = Vector2(0.6667301, 0.99999994)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(261.5, 90, 263, 90, 263, 116, 261.5, 116)
+
+[node name="segura" type="Polygon2D" parent="." unique_id=346302151]
+position = Vector2(-474.00003, -39)
+scale = Vector2(2.0048296, 0.34615323)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(261.5, 90, 263, 90, 263, 116, 261.5, 116)
+
+[node name="segura2" type="Polygon2D" parent="." unique_id=250529176]
+position = Vector2(-503, -39)
+scale = Vector2(2.0048296, 0.34615323)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(261.5, 90, 263, 90, 263, 116, 261.5, 116)
+
+[node name="money" type="Polygon2D" parent="." unique_id=483597772]
+position = Vector2(11, 14)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(20, -19, 14, -20, 10, -22, 8, -26, 5, -26, 5, -28, 8, -28, 8, -30, 5, -30, 5, -32, 8, -32, 9, -34, 14, -38, 20, -39, 20, -36, 16, -35, 13, -32, 17, -32, 17, -30, 12, -30, 12, -28, 17, -28, 17, -26, 12, -26, 13, -24, 16, -22, 20, -21)
+
+[node name="money2" type="Polygon2D" parent="." unique_id=1038212690]
+position = Vector2(38, 14)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(20, -19, 14, -20, 10, -22, 8, -26, 5, -26, 5, -28, 8, -28, 8, -30, 5, -30, 5, -32, 8, -32, 9, -34, 14, -38, 20, -39, 20, -36, 16, -35, 13, -32, 17, -32, 17, -30, 12, -30, 12, -28, 17, -28, 17, -26, 12, -26, 13, -24, 16, -22, 20, -21)
+
+[node name="window" type="Polygon2D" parent="." unique_id=92683849]
+position = Vector2(-1, 2)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(10, 12, 10, 28, 23, 28, 23, 12)
+
+[node name="window2" type="Polygon2D" parent="." unique_id=1903331935]
+position = Vector2(-1, 2)
+color = Color(0, 0.6392157, 1, 1)
+polygon = PackedVector2Array(12, 14, 12, 26, 21, 26, 21, 14)
+
+[node name="window3" type="Polygon2D" parent="." unique_id=1720513274]
+position = Vector2(39, 2)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(10, 12, 10, 28, 23, 28, 23, 12)
+
+[node name="window4" type="Polygon2D" parent="." unique_id=258071459]
+position = Vector2(39, 2)
+color = Color(0, 0.6392157, 1, 1)
+polygon = PackedVector2Array(12, 14, 12, 26, 21, 26, 21, 14)
+
+[node name="window5" type="Polygon2D" parent="." unique_id=246836523]
+position = Vector2(-1, 0)
+color = Color(0.03137255, 1, 1, 0.3647059)
+polygon = PackedVector2Array(12, 18, 21, 22, 21, 20, 12, 16)
+
+[node name="window6" type="Polygon2D" parent="." unique_id=1200513780]
+position = Vector2(39, 6)
+color = Color(0.03137255, 1, 1, 0.3647059)
+polygon = PackedVector2Array(12, 18, 21, 22, 21, 20, 12, 16)
+
+[node name="window7" type="Polygon2D" parent="." unique_id=1065747576]
+position = Vector2(39, 0)
+color = Color(0.03137255, 1, 1, 0.3647059)
+polygon = PackedVector2Array(12, 18, 21, 22, 21, 20, 12, 16)
+
+[node name="window8" type="Polygon2D" parent="." unique_id=1265576561]
+position = Vector2(-1, 5)
+color = Color(0.03137255, 1, 1, 0.3647059)
+polygon = PackedVector2Array(12, 18, 21, 22, 21, 20, 12, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1999782391]
+position = Vector2(35.5, 32)
+shape = SubResource("RectangleShape2D_8lm8g")

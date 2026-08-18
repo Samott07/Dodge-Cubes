@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbu3xif5ddwip"]
 
-[ext_resource type="Script" uid="uid://bn5uh7xh4p338" path="res://Scenes/tutorial.gd" id="1_ka2pi"]
+[ext_resource type="Script" uid="uid://bn5uh7xh4p338" path="res://Scripts/tutorial.gd" id="1_ka2pi"]
 
 [node name="Tutorial" type="Control" unique_id=1546213216]
 layout_mode = 3
@@ -30,23 +30,33 @@ text = "HOW TO PLAY"
 [node name="Pc" type="Label" parent="." unique_id=1448472198]
 layout_mode = 0
 offset_left = 180.0
-offset_top = 120.0
+offset_top = 110.0
 offset_right = 307.0
-offset_bottom = 339.0
+offset_bottom = 329.0
 theme_override_font_sizes/font_size = 24
 text = "💻 PC
 
 Move with:
 A / D
 or
-← →"
+"
+
+[node name="Line2D" type="Line2D" parent="Pc" unique_id=1545629466]
+scale = Vector2(0.4, 0.4)
+points = PackedVector2Array(2.5, 482.49997, -22.5, 512.5, -2.5, 540, -22.5, 512.5, 32.49997, 512.5)
+
+[node name="Line2D2" type="Line2D" parent="Pc" unique_id=254170237]
+position = Vector2(47, 410)
+rotation = 3.1415927
+scale = Vector2(0.4, 0.4)
+points = PackedVector2Array(2.5, 482.49997, -22.5, 512.5, -2.5, 540, -22.5, 512.5, 32.49997, 512.5)
 
 [node name="mobile" type="Label" parent="." unique_id=955922318]
 layout_mode = 0
 offset_left = 850.0
-offset_top = 120.0
-offset_right = 971.0
-offset_bottom = 247.0
+offset_top = 110.0
+offset_right = 1193.0
+offset_bottom = 302.0
 theme_override_font_sizes/font_size = 26
 text = "📱 MOBILE
 
@@ -57,21 +67,31 @@ text = "📱 MOBILE
 [node name="text" type="Label" parent="." unique_id=905791303]
 layout_mode = 0
 offset_left = 350.0
-offset_top = 120.0
+offset_top = 110.0
 offset_right = 840.0
-offset_bottom = 579.0
+offset_bottom = 611.0
 theme_override_font_sizes/font_size = 28
-text = "🟥 Avoid the red cubes!
+text = "     Avoid the red cubes!
 
-❓ Mystery Block:
+\"?\" Mystery Block:
 It can have negative effects on you...
 but it's also friendly when it wants
 to be...
 
-🟦this is your player
+     this is your player
 
+You earn 1 coin every 10 seconds.
 
 Survive as long as possible."
+
+[node name="Polygon2D" type="Polygon2D" parent="text" unique_id=277605657]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(7, 7, 31, 7, 31, 34, 7, 34)
+
+[node name="Polygon2D2" type="Polygon2D" parent="text" unique_id=555156040]
+position = Vector2(0, 295)
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(7, 7, 31, 7, 31, 34, 7, 34)
 
 [node name="Button" type="Button" parent="." unique_id=1079837803]
 layout_mode = 0

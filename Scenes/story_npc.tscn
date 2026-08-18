@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://byj6cfydt4qf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8mus"]
+size = Vector2(94, 191)
+
+[node name="StoryNPC" type="Area2D" unique_id=270998559]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1482602239]
+position = Vector2(144, 129.5)
+shape = SubResource("RectangleShape2D_c8mus")
+
+[node name="cara" type="Polygon2D" parent="." unique_id=620811743]
+position = Vector2(-5, -9)
+color = Color(0.8784314, 0.6745098, 0.4117647, 1)
+polygon = PackedVector2Array(124, 73, 176, 71, 176, 111, 125, 111)
+
+[node name="chapeu" type="Polygon2D" parent="." unique_id=1331936720]
+position = Vector2(-3, -26)
+color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+polygon = PackedVector2Array(89, 79, 119, 79, 119, 59, 177, 59, 177, 79, 206, 79, 206, 96, 89, 95)
+
+[node name="mask" type="Polygon2D" parent="." unique_id=270270181]
+color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+polygon = PackedVector2Array(119, 83, 120, 102, 171, 102, 171, 82)
+
+[node name="eye" type="Polygon2D" parent="." unique_id=1050425918]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(124, 74, 135, 74, 134, 77, 124, 77)
+
+[node name="eye2" type="Polygon2D" parent="." unique_id=663401654]
+position = Vector2(30, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(134.499, 77, 123.499, 77, 124.501, 74, 134.501, 74)
+
+[node name="pescoço" type="Polygon2D" parent="." unique_id=1959476597]
+position = Vector2(3, 0)
+color = Color(0.8784314, 0.6745098, 0.4117647, 1)
+polygon = PackedVector2Array(150, 102, 150, 113, 133, 113, 133, 102)
+
+[node name="luva" type="Polygon2D" parent="." unique_id=909253364]
+color = Color(0.31764707, 0.31764707, 0.31764707, 1)
+polygon = PackedVector2Array(98, 177, 98, 183, 118, 183, 118, 177)
+
+[node name="luva2" type="Polygon2D" parent="." unique_id=353326904]
+position = Vector2(73, 3)
+color = Color(0.31764707, 0.31764707, 0.31764707, 1)
+polygon = PackedVector2Array(98, 177, 98, 183, 118, 183, 118, 177)
+
+[node name="body" type="Polygon2D" parent="." unique_id=529391731]
+position = Vector2(-8, -23.999998)
+scale = Vector2(1, 1.2461538)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(105, 109, 199, 109, 199, 163.58, 176, 163.58, 176, 200, 159, 200, 152, 175, 145, 200, 128, 200, 128, 162, 105, 162)

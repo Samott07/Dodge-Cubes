@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://dkqyqsjdap54n"]
+
+[ext_resource type="Script" uid="uid://xwr7g1577uv6" path="res://Scripts/shop.gd" id="1_lagin"]
+[ext_resource type="Script" uid="uid://dvia7ofq0nh0w" path="res://Scripts/seller.gd" id="3_i4qx4"]
+[ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="5_r8bg4"]
+[ext_resource type="Texture2D" uid="uid://cfyxghlikdqgy" path="res://UI/button.png" id="6_m1c0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ji4"]
+size = Vector2(106, 175)
+
+[node name="Shop" type="Node2D" unique_id=101271093]
+script = ExtResource("1_lagin")
+
+[node name="Bighouse" type="Node2D" parent="." unique_id=601657387]
+
+[node name="wall" type="Polygon2D" parent="Bighouse" unique_id=1084959179]
+color = Color(0.7529412, 0.40784314, 0, 1)
+polygon = PackedVector2Array(62, 709, 74, 39, 1190, 32, 1203, 711)
+
+[node name="garagem" type="Polygon2D" parent="Bighouse" unique_id=1036593852]
+position = Vector2(22, -3)
+color = Color(0.41598046, 0.41598046, 0.41598028, 1)
+polygon = PackedVector2Array(343, 510, 931, 510, 931, 713, 343, 713)
+
+[node name="contornos" type="Line2D" parent="Bighouse" unique_id=1822663932]
+points = PackedVector2Array(365, 707, 368, 506, 950, 504, 949, 705, 365, 707, 366, 666, 950, 663, 949, 600, 367, 605, 367, 553, 947, 551)
+default_color = Color(0.288518, 0.28851798, 0.28851798, 1)
+
+[node name="money" type="Polygon2D" parent="Bighouse" unique_id=1415910936]
+position = Vector2(44.000015, 497.00006)
+scale = Vector2(10, 10)
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(20, -19, 14, -20, 10, -22, 8, -26, 5, -26, 5, -28, 8, -28, 8, -30, 5, -30, 5, -32, 8, -32, 9, -34, 14, -38, 20, -39, 20, -36, 16, -35, 13, -32, 17, -32, 17, -30, 12, -30, 12, -28, 17, -28, 17, -26, 12, -26, 13, -24, 16, -22, 20, -21)
+
+[node name="telhado" type="Polygon2D" parent="Bighouse" unique_id=1544622652]
+position = Vector2(16, 4)
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+polygon = PackedVector2Array(12, 85, 1228, 89, 1109, -127, 117, -137)
+
+[node name="Shopname" type="Label" parent="Bighouse" unique_id=187239714]
+offset_left = 279.0
+offset_top = -5.0
+offset_right = 1090.0
+offset_bottom = 404.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 300
+text = "SHOP"
+
+[node name="ground" type="ColorRect" parent="." unique_id=1263634286]
+offset_top = 710.0
+offset_right = 1280.0
+offset_bottom = 750.0
+color = Color(0, 1, 0, 1)
+
+[node name="leftwall" type="ColorRect" parent="." unique_id=955956063]
+offset_right = 20.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="rightwall" type="ColorRect" parent="." unique_id=877113045]
+offset_left = 1260.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1309930869]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=575609865]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="leftbutton" type="TouchScreenButton" parent="CanvasLayer/Control" unique_id=2013062913]
+position = Vector2(35, 520)
+texture_normal = ExtResource("6_m1c0q")
+action = "ui_left"
+
+[node name="rightbutton" type="TouchScreenButton" parent="CanvasLayer/Control" unique_id=1031015808]
+position = Vector2(1070, 520)
+texture_normal = ExtResource("6_m1c0q")
+action = "ui_right"
+
+[node name="seller" type="Area2D" parent="CanvasLayer" unique_id=901713961]
+script = ExtResource("3_i4qx4")
+
+[node name="head" type="Polygon2D" parent="CanvasLayer/seller" unique_id=333599506]
+position = Vector2(15, 22)
+color = Color(0.8862745, 0.67058825, 0.44313726, 1)
+polygon = PackedVector2Array(595, 513, 653, 513, 653, 553, 631, 553, 632, 574, 618, 573, 617, 553, 595, 553)
+
+[node name="eye" type="Polygon2D" parent="CanvasLayer/seller/head" unique_id=36539928]
+position = Vector2(34, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(601, 522, 612, 522, 612, 526, 601, 526)
+
+[node name="eye2" type="Polygon2D" parent="CanvasLayer/seller/head" unique_id=1324568305]
+position = Vector2(2, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(601, 522, 612, 522, 612, 526, 601, 526)
+
+[node name="mouth" type="Polygon2D" parent="CanvasLayer/seller/head" unique_id=1857827590]
+position = Vector2(58, -1)
+scale = Vector2(0.90909094, 1)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(617.10004, 541, 620.4, 540, 623.7, 540, 625.9, 542, 625.9, 544, 624.80005, 546, 623.7, 547, 621.5, 548, 617.10004, 547, 614.9, 545, 614.9, 542)
+
+[node name="tshirt" type="Polygon2D" parent="CanvasLayer/seller" unique_id=420042247]
+position = Vector2(2, 1)
+color = Color(0, 0.34279114, 0, 1)
+polygon = PackedVector2Array(601, 589, 676, 588, 693, 646, 585, 649)
+
+[node name="bota2" type="Polygon2D" parent="CanvasLayer/seller" unique_id=228308608]
+position = Vector2(39, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(609, 701, 609, 710, 632, 710, 632, 701)
+
+[node name="bota" type="Polygon2D" parent="CanvasLayer/seller" unique_id=925042703]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(608, 701, 608, 710, 632, 710, 632, 701)
+
+[node name="calcas" type="Polygon2D" parent="CanvasLayer/seller" unique_id=2066476400]
+polygon = PackedVector2Array(607, 657, 670, 657, 671, 703, 650, 703, 640, 685, 632, 702, 608, 702)
+
+[node name="mesa" type="Polygon2D" parent="CanvasLayer/seller" unique_id=365585924]
+color = Color(0.44416693, 0.2048119, 1.4439226e-07, 1)
+polygon = PackedVector2Array(543, 645, 732, 644, 733, 659, 714, 659, 715, 709, 705, 710, 703, 659, 576, 660, 577, 709, 563, 709, 561, 659, 545, 659)
+
+[node name="Player" parent="CanvasLayer/seller" unique_id=395803764 instance=ExtResource("5_r8bg4")]
+position = Vector2(25, 670)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/seller" unique_id=2068811422]
+position = Vector2(641, 622.5)
+shape = SubResource("RectangleShape2D_e5ji4")
+
+[node name="LeaveShopButton" type="Button" parent="CanvasLayer" unique_id=1186409209]
+offset_left = 1109.0
+offset_top = 43.0
+offset_right = 1212.0
+offset_bottom = 74.0
+text = "LEAVE SHOP"
+
+[node name="CoinsLabel" type="Label" parent="CanvasLayer" unique_id=137239588]
+offset_left = 20.0
+offset_top = 65.0
+offset_right = 81.0
+offset_bottom = 88.0
+text = "Coins: 0"
+
+[node name="SellerDialogue" type="Panel" parent="CanvasLayer" unique_id=1211117602]
+visible = false
+offset_left = 4.0
+offset_top = 21.0
+offset_right = 9.0
+offset_bottom = 21.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/SellerDialogue" unique_id=244790329]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 486.0
+offset_right = 680.0
+offset_bottom = 509.0
+text = "Name: ???"
+
+[node name="DialogueLabel" type="Label" parent="CanvasLayer/SellerDialogue" unique_id=1802822191]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 485.0
+offset_right = 1020.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "-Today seems to be quite a busy day...
+Cubes like you just keep showing up, 
+looking to buy upgrades for yourselves..."
+
+[node name="UpgradeMenu" type="Panel" parent="CanvasLayer" unique_id=205937963]
+visible = false
+offset_bottom = 6.0
+
+[node name="Title" type="Label" parent="CanvasLayer/UpgradeMenu" unique_id=1582207555]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 395.0
+offset_right = 774.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "What do you want to buy?"
+
+[node name="CoinMultiplierButton" type="Button" parent="CanvasLayer/UpgradeMenu" unique_id=554071782]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 442.0
+offset_right = 532.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 21
+text = "🪙 Coin Multiplier
+1.0x
+
+(only 3 upgrads)"
+
+[node name="ExtraHitButton" type="Button" parent="CanvasLayer/UpgradeMenu" unique_id=1962491716]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 441.0
+offset_right = 716.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 23
+text = "🛡️Extra Hit
+1 use
+(1 purchase only)
+"
+
+[node name="LongerPowerButton" type="Button" parent="CanvasLayer/UpgradeMenu" unique_id=716918512]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 444.0
+offset_right = 983.0
+offset_bottom = 542.0
+theme_override_font_sizes/font_size = 21
+text = "🕐 Longer Power
++1 second
+(unlimited upgrades)"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/UpgradeMenu" unique_id=1638710660]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 666.0
+offset_right = 942.0
+offset_bottom = 697.0
+text = "BACK"
+
+[connection signal="pressed" from="CanvasLayer/LeaveShopButton" to="." method="_on_leave_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeMenu/CoinMultiplierButton" to="." method="_on_coin_multiplier_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeMenu/ExtraHitButton" to="." method="_on_extra_hit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeMenu/LongerPowerButton" to="." method="_on_longer_power_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeMenu/CloseButton" to="." method="_on_close_button_pressed"]

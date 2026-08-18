@@ -8,13 +8,11 @@ var shoot_timer := 0.0
 func _process(delta):
 
 	position.x += speed * direction * delta
-
 	shoot_timer -= delta
 
 	if shoot_timer <= 0:
 
 		shoot()
-
 		shoot_timer = 1.0
 
 	if position.x >= 1180:
@@ -30,7 +28,6 @@ func _process(delta):
 	if bounces >= 4:
 
 		get_parent().finish_alien_event()
-
 		queue_free()
 func shoot():
 
