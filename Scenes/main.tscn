@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0e8mx014t8g" path="res://Scenes/shop_event.tscn" id="4_344ge"]
 [ext_resource type="AudioStream" uid="uid://etie7w4ixkjw" path="res://Sounds/death.wav.wav" id="4_kry3j"]
 [ext_resource type="AudioStream" uid="uid://dv4gje5k5ttdt" path="res://Sounds/start.wav.wav" id="5_21xkr"]
+[ext_resource type="AudioStream" uid="uid://bad6vqo780b0b" path="res://Audio/Music/ArenaMusic.mp3.mp3" id="9_ynf5e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8gbba"]
 font_size = 64
@@ -224,6 +225,52 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 
+[node name="StoryDialogue" type="Control" parent="CanvasLayer" unique_id=711944946]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer/StoryDialogue" unique_id=1287672891]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 250.0
+offset_right = 980.0
+offset_bottom = 470.0
+
+[node name="QuestionLabel" type="Label" parent="CanvasLayer/StoryDialogue/DialogueBox" unique_id=749358545]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 20.0
+offset_right = 584.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = "Do you want to know the truth about this place?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesButton2" type="Button" parent="CanvasLayer/StoryDialogue/DialogueBox" unique_id=585292349]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 220.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 20
+text = "YES"
+
+[node name="NoButton2" type="Button" parent="CanvasLayer/StoryDialogue/DialogueBox" unique_id=659700832]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 150.0
+offset_right = 550.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 20
+text = "NO"
+
 [node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=117190587]
 stream = ExtResource("4_kry3j")
 
@@ -243,8 +290,13 @@ wait_time = 10.0
 autostart = true
 
 [node name="StoryTimer" type="Timer" parent="." unique_id=137055101]
-wait_time = 10.0
+wait_time = 100.0
 autostart = true
+
+[node name="ArenaMusic" type="AudioStreamPlayer" parent="." unique_id=1371843997]
+stream = ExtResource("9_ynf5e")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
@@ -252,7 +304,11 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopQuestion/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShopQuestion/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StoryDialogue/DialogueBox/YesButton2" to="." method="_on_yes_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/StoryDialogue/DialogueBox/NoButton2" to="." method="_on_no_button_2_pressed"]
 [connection signal="timeout" from="MysteryTimer" to="." method="_on_mystery_timer_timeout"]
 [connection signal="timeout" from="AlienTimer" to="." method="_on_alien_timer_timeout"]
 [connection signal="timeout" from="ShopTimer" to="." method="_on_shop_timer_timeout"]
 [connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
+[connection signal="timeout" from="StoryTimer" to="." method="_on_story_timer_timeout"]
+[connection signal="finished" from="ArenaMusic" to="." method="_on_arena_music_finished"]

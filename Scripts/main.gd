@@ -6,12 +6,14 @@ const SAVE_FILE = "user://save.dat"
 @export var mystery_scene: PackedScene
 @export var shop_scene: PackedScene
 @onready var alien_timer = $AlienTimer
-
+var story_npc_instance: Node = null
+var story_broken_wall_instance: Node = null
 var normal_background = Color("5a8dff")
 var alien_background = Color("ee5f00ff")
-
+var story_event_used := false
 var alien_event = false
 var story_npc_scene = preload("res://Scenes/story_npc.tscn")
+var story_broken_wall_scene = preload("res://Scenes/story_broken_wall.tscn")
 var alien_scene = preload("res://Scenes/alien.tscn")
 var alien_mystery_scene = preload("res://Scenes/alien_mystery.tscn")
 var shop_question_open := false
@@ -25,6 +27,7 @@ var coin_fraction := 0.0
 var coin_multiplier_level := 0
 var extra_hit := false
 var longer_power_level := 0
+var story_wall_position := Vector2(800, 485)
 func _ready():
 	RenderingServer.set_default_clear_color(normal_background)
 
@@ -143,14 +146,11 @@ func _on_main_menu_button_pressed():
 func _on_mystery_timer_timeout():
 
 	var block = mystery_scene.instantiate()
-
 	block.position = Vector2(
 		randf_range(40, 1240),
 		-40
 	)
-
 	add_child(block)
-
 	# Como o Timer está com One Shot desligado,
 	# basta alterar o próximo tempo.
 	$MysteryTimer.wait_time = randf_range(20.0, 40.0)
@@ -159,9 +159,7 @@ func activate_mystery():
 
 	if get_tree().paused:
 		return
-
 	var effect = randi() % 2
-
 	if effect == 0:
 		slow_player()
 	else:
@@ -171,29 +169,19 @@ func slow_player():
 
 	$CanvasLayer/EffectLabel.text = "🐢 SLOW"
 	$CanvasLayer/EffectLabel.visible = true
-
 	var old_speed = $Player.speed
-
 	$Player.speed *= 0.4
-
 	await get_tree().create_timer(get_power_duration()).timeout
-
 	if is_instance_valid($Player):
 		$Player.speed = old_speed
-
 	$CanvasLayer/EffectLabel.visible = false
-
 func double_score_effect():
 
 	$CanvasLayer/EffectLabel.text = "⭐ DOUBLE SCORE"
 	$CanvasLayer/EffectLabel.visible = true
-
 	double_score = true
-
 	await get_tree().create_timer(get_power_duration()).timeout
-
 	double_score = false
-
 	$CanvasLayer/EffectLabel.visible = false
 
 func _on_alien_timer_timeout():
@@ -225,36 +213,25 @@ func finish_alien_event():
 	RenderingServer.set_default_clear_color(normal_background)
 
 	alien_event = false
-
 	$CanvasLayer/AlienEventLabel.text = "The aliens... left a present?"
 	$CanvasLayer/AlienEventLabel.visible = true
-
 	await get_tree().create_timer(2.0).timeout
-
 	$CanvasLayer/AlienEventLabel.visible = false
-
 	var box = alien_mystery_scene.instantiate()
-
 	add_child(box)
-
 	box.position = Vector2(
 		randf_range(40, 1240),
 		-40
 	)
-
 func activate_alien_mystery():
 
 	if get_tree().paused:
 		return
-
 	var effect = randi_range(1, 100)
-
 	if effect <= 40:
 		small_player_effect()
-
 	elif effect <= 80:
 		enemy_rush_effect()
-
 	else:
 		coin_reward_effect()
 func small_player_effect():
@@ -263,16 +240,11 @@ func small_player_effect():
 	$CanvasLayer/EffectLabel.visible = true
 
 	var player = get_tree().get_first_node_in_group("player")
-
 	if player == null:
 		return
-
 	var old_scale = player.scale
-
 	player.scale = old_scale * 0.5
-
 	await get_tree().create_timer(get_power_duration()).timeout
-
 	if is_instance_valid(player):
 		player.scale = old_scale
 
@@ -282,19 +254,13 @@ func enemy_rush_effect():
 
 	$CanvasLayer/EffectLabel.text = "⚡ ENEMY RUSH!"
 	$CanvasLayer/EffectLabel.visible = true
-
 	enemy_rush = true
-
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	var old_speeds = {}
-
 	for enemy in enemies:
-
 		old_speeds[enemy] = enemy.speed
 		enemy.speed *= 1.5
-
 	await get_tree().create_timer(get_power_duration()).timeout
-
 	enemy_rush = false
 
 	for enemy in enemies:
@@ -304,12 +270,9 @@ func enemy_rush_effect():
 func coin_reward_effect():
 
 	coins += 25
-
 	$CanvasLayer/EffectLabel.text = "🪙 +25 COINS!"
 	$CanvasLayer/EffectLabel.visible = true
-
 	await get_tree().create_timer(2.0).timeout
-
 	$CanvasLayer/EffectLabel.visible = false
 func _on_shop_timer_timeout():
 	var shop = shop_scene.instantiate()
@@ -323,7 +286,6 @@ func _on_shop_timer_timeout():
 func show_shop_question():
 	if shop_question_open:
 		return
-
 	shop_question_open = true
 	get_tree().paused = true
 	$CanvasLayer/ShopQuestion.visible = true
@@ -373,7 +335,7 @@ func _on_coin_timer_timeout():
 		coins += whole_coins
 		coin_fraction -= whole_coins
 func reset_run_data():
-
+	GameState.knows_nyx_name = false
 	GameState.saved_score = 0.0
 	GameState.saved_coins = 0.0
 	GameState.coin_multiplier_level = 0
@@ -385,5 +347,100 @@ func reset_run_data():
 	extra_hit = false
 	GameState.longer_power_level = 0
 	longer_power_level = 0
+	story_event_used = false
 func get_power_duration() -> float:
 	return 5.0 + longer_power_level
+func _on_story_timer_timeout():
+	if !GameState.history_mode:
+		return
+	if story_event_used:
+		return
+	story_event_used = true
+	var npc = story_npc_scene.instantiate()
+	add_child(npc)
+	story_npc_instance = npc
+	npc.position = Vector2(500, 485)
+	$StoryTimer.stop()
+	$CanvasLayer/StoryDialogue.visible = true
+	get_tree().paused = true
+func _on_no_button_2_pressed():
+	$CanvasLayer/StoryDialogue.visible = false
+	if is_instance_valid(story_npc_instance):
+		story_npc_instance.queue_free()
+		story_npc_instance = null
+	get_tree().paused = false
+func _on_yes_button_2_pressed() -> void:
+	$CanvasLayer/StoryDialogue.visible = false
+	await story_cutscene()
+func story_cutscene():
+	if !is_instance_valid(story_npc_instance):
+		get_tree().paused = false
+		return
+	var tree = get_tree()
+	# Pequena pausa antes do NPC começar a andar
+	await tree.create_timer(0.5, true).timeout
+	# NPC vai até à parede
+	var npc_tween = create_tween()
+	npc_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	npc_tween.tween_property(
+		story_npc_instance,
+		"position",
+		Vector2(1055, 485),
+		2.0
+	)
+	await npc_tween.finished
+	# Pequena pausa quando chega à parede
+	await tree.create_timer(0.5, true).timeout
+	# Criar a parede partida
+	story_broken_wall_instance = story_broken_wall_scene.instantiate()
+	add_child(story_broken_wall_instance)
+	story_broken_wall_instance.position = Vector2(0, 0)
+	story_broken_wall_instance.visible = true
+	# Encontrar o Player
+	var player = tree.get_first_node_in_group("player")
+	if player != null:
+		# Parar completamente o movimento do Player
+		player.velocity = Vector2.ZERO
+		player.set_process(false)
+		player.set_physics_process(false)
+		# Player vai automaticamente até ao NPC
+		var player_tween = create_tween()
+		player_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		player_tween.tween_property(
+			player,
+			"position",
+			Vector2(1100, 670),
+			2.0
+		)
+		await player_tween.finished
+		# Garantir que fica parado
+		player.velocity = Vector2.ZERO
+	# Pequena pausa antes de atravessar
+	await tree.create_timer(0.5, true).timeout
+	# NPC e Player atravessam a parede
+	var npc_cross_tween = create_tween()
+	npc_cross_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	npc_cross_tween.tween_property(
+		story_npc_instance,
+		"position",
+		Vector2(1280, 485),
+		1.0
+	)
+	var player_cross_tween = create_tween()
+	player_cross_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	player_cross_tween.tween_property(
+		player,
+		"position",
+		Vector2(1280, 670),
+		1.0
+	)
+	await npc_cross_tween.finished
+	# Pequena pausa antes de mudar de cena
+	await tree.create_timer(0.5, true).timeout
+	# Entrar no Kingdom
+	GameState.in_kingdom = true
+	GameState.kingdom_player_position = Vector2(21, 665)
+	tree.paused = false
+	tree.change_scene_to_file("res://Scenes/kingdom.tscn")
+func _on_arena_music_finished():
+	$ArenaMusic.play()

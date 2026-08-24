@@ -67,9 +67,42 @@ text = "CREDITOS"
 
 [node name="Versão do jogo" type="Label" parent="VBoxContainer" unique_id=227731937]
 layout_mode = 2
-text = "v1.2.3"
+text = "v1.2.4"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1117670073]
+
+[node name="HistoryMode" type="Control" parent="CanvasLayer" unique_id=1333943663]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HistoryLabel" type="Label" parent="CanvasLayer/HistoryMode" unique_id=1341459274]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 348.0
+offset_right = 315.0
+offset_bottom = 371.0
+text = "History mode: ON"
+
+[node name="HistoryButton" type="Button" parent="CanvasLayer/HistoryMode" unique_id=1335360612]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 396.0
+offset_right = 300.0
+offset_bottom = 427.0
+text = "YES   ->   NO"
+
+[node name="Label" type="Label" parent="CanvasLayer/HistoryMode" unique_id=439400821]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 446.0
+offset_right = 384.0
+offset_bottom = 469.0
+text = "(Story mode is still in development)"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonExitButton" to="." method="_on_button_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="CanvasLayer/HistoryMode/HistoryButton" to="." method="_on_history_button_pressed"]

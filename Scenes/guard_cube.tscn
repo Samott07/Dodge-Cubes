@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bt5uttsvakc1f"]
+
+[ext_resource type="Script" uid="uid://bpg78wyed3kmu" path="res://Scripts/guard_cube.gd" id="1_pkjnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gdrq"]
+size = Vector2(100, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkjnw"]
+size = Vector2(100, 90)
+
+[node name="GuardCube" type="Area2D" unique_id=1540832770]
+script = ExtResource("1_pkjnw")
+
+[node name="body" type="Polygon2D" parent="." unique_id=2083734571]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+color = Color(0.58909595, 0.58909553, 0.58909535, 1)
+polygon = PackedVector2Array(0, 36, 50, 36, 50, 81, 0, 81)
+
+[node name="eye" type="Polygon2D" parent="body" unique_id=1895903198]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(5, 58, 14, 58, 14, 62, 5, 62)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/eye" unique_id=144117366]
+polygon = PackedVector2Array(7, 58, 11, 58, 11, 62, 7, 62)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/eye/Polygon2D" unique_id=949157379]
+color = Color(0, 0.64215106, 0.6443671, 1)
+polygon = PackedVector2Array(7, 59, 9, 59, 9, 62, 7, 62)
+
+[node name="eye2" type="Polygon2D" parent="body" unique_id=254802521]
+position = Vector2(27, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(5, 58, 14, 58, 14, 62, 5, 62)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/eye2" unique_id=813935666]
+polygon = PackedVector2Array(7, 58, 11, 58, 11, 62, 7, 62)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/eye2/Polygon2D" unique_id=1776182168]
+color = Color(0, 0.64215106, 0.6443671, 1)
+polygon = PackedVector2Array(7, 59, 9, 59, 9, 62, 7, 62)
+
+[node name="capacete" type="Polygon2D" parent="body" unique_id=678402980]
+color = Color(0.73333335, 0.73333335, 0.73333335, 1)
+polygon = PackedVector2Array(-1, 36, 51, 36, 51, 52, -1, 52)
+
+[node name="linha" type="Polygon2D" parent="body/capacete" unique_id=1414132401]
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha2" type="Polygon2D" parent="body/capacete" unique_id=934138785]
+position = Vector2(28, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha3" type="Polygon2D" parent="body/capacete" unique_id=361814768]
+position = Vector2(21, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha4" type="Polygon2D" parent="body/capacete" unique_id=239112280]
+position = Vector2(14, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha5" type="Polygon2D" parent="body/capacete" unique_id=1644975059]
+position = Vector2(7, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha6" type="Polygon2D" parent="body/capacete" unique_id=42304496]
+position = Vector2(42, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="linha7" type="Polygon2D" parent="body/capacete" unique_id=565718866]
+position = Vector2(35, 0)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(1, 38, 5, 38, 5, 49, 1, 49)
+
+[node name="partedecima" type="Polygon2D" parent="body/capacete" unique_id=584639684]
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(43, 36, 60, 36, 60, 25, 43, 25, 43, 25)
+
+[node name="partedecima2" type="Polygon2D" parent="body/capacete" unique_id=1183486141]
+position = Vector2(-9, -4)
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(45, 33, 60, 33, 60, 25, 45, 25)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/capacete" unique_id=334540316]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(51, 26, 66, 26, 66, 22, 51, 22)
+
+[node name="Polygon2D2" type="Polygon2D" parent="body/capacete" unique_id=1893238776]
+position = Vector2(-4, -4)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(51, 26, 62, 26, 62, 18, 51, 18)
+
+[node name="armadura" type="Polygon2D" parent="body" unique_id=158917040]
+color = Color(0.73300546, 0.7330054, 0.7330054, 1)
+polygon = PackedVector2Array(0, 70, 0, 81, 50, 81, 50, 70)
+
+[node name="espada" type="Polygon2D" parent="body" unique_id=886649382]
+position = Vector2(-3, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(64, 81, 67, 81, 67, 42, 64, 42)
+
+[node name="Polygon2D" type="Polygon2D" parent="body/espada" unique_id=1287058881]
+color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+polygon = PackedVector2Array(61, 43, 71, 43, 66, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471881039]
+position = Vector2(50, 119)
+shape = SubResource("RectangleShape2D_2gdrq")
+
+[node name="TalkButton" type="Button" parent="." unique_id=988713216]
+offset_left = 27.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 41.0
+text = "TALK"
+
+[node name="NameLabel" type="Label" parent="." unique_id=2039237980]
+offset_left = -35.0
+offset_top = 47.0
+offset_right = 68.0
+offset_bottom = 70.0
+text = "Name: Guard"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=610790624]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=708119044]
+position = Vector2(50, 119)
+shape = SubResource("RectangleShape2D_pkjnw")
+
+[connection signal="pressed" from="TalkButton" to="." method="_on_talk_button_pressed"]

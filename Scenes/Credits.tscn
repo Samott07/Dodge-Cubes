@@ -35,7 +35,7 @@ grow_vertical = 2
 [node name="CREDITS" type="Label" parent="VBoxContainer" unique_id=674899013]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "CREDITS"
+text = "CREDITS :"
 
 [node name="DEV" type="Label" parent="VBoxContainer" unique_id=1504510999]
 layout_mode = 2
@@ -60,5 +60,35 @@ text = "Thanks for playing!"
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "BACK"
+
+[node name="Musics" type="Label" parent="." unique_id=1699463175]
+layout_mode = 0
+offset_left = -500.0
+offset_top = -190.0
+offset_right = -315.0
+offset_bottom = -123.0
+theme_override_font_sizes/font_size = 48
+text = "Musics :"
+
+[node name="Label" type="Label" parent="Musics" unique_id=1392385379]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 89.0
+offset_right = 293.0
+offset_bottom = 450.0
+text = "            ARENA MUSIC:
+\"Game - Game Music\"
+by The_Mountain
+Pixabay
+
+           KINGDOM MUSIC:
+\"Game - Game Music\"
+by MondaMusic
+Pixabay
+
+           SHOP MUSIC:
+\"Coffee Shop Peaceful Afternoon Calm\"
+by alex-morgan
+Pixabay"
 
 [connection signal="pressed" from="VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://s6511lwnox1p"]
+
+[ext_resource type="Script" uid="uid://boaydexf1jync" path="res://Scenes/kingdom.gd" id="1_qtqo3"]
+[ext_resource type="PackedScene" uid="uid://byj6cfydt4qf8" path="res://Scenes/story_npc.tscn" id="2_u4bmn"]
+[ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="3_ewg03"]
+[ext_resource type="PackedScene" uid="uid://bt5uttsvakc1f" path="res://Scenes/guard_cube.tscn" id="4_u4bmn"]
+[ext_resource type="AudioStream" uid="uid://b8a53espu77k6" path="res://Audio/Music/KingdomMusic.mp3.mp3" id="5_ewg03"]
+
+[node name="kingdom" type="Node2D" unique_id=1129309439]
+script = ExtResource("1_qtqo3")
+
+[node name="achievments" type="Node2D" parent="." unique_id=781960853]
+
+[node name="table" type="Polygon2D" parent="achievments" unique_id=1880607197]
+color = Color(0.52944237, 0.29826102, 0, 1)
+polygon = PackedVector2Array(602, 710, 614, 710, 614, 689, 693, 689, 693, 710, 706, 710, 706, 689, 712, 689, 712, 655, 594, 655, 594, 689.346, 602, 689)
+
+[node name="Polygon2D" type="Polygon2D" parent="achievments/table" unique_id=1559175988]
+position = Vector2(-3, 1)
+color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+polygon = PackedVector2Array(606, 661, 633, 661, 633, 676, 606, 676)
+
+[node name="Polygon2D2" type="Polygon2D" parent="achievments/table" unique_id=1393508191]
+position = Vector2(74, 1)
+color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+polygon = PackedVector2Array(606, 661, 633, 661, 633, 676, 606, 676)
+
+[node name="Polygon2D3" type="Polygon2D" parent="achievments/table" unique_id=76642309]
+position = Vector2(37, 1)
+color = Color(0.31061712, 0.31061712, 0.3106171, 1)
+polygon = PackedVector2Array(606, 661, 633, 661, 633, 676, 606, 676)
+
+[node name="placa" type="Polygon2D" parent="achievments" unique_id=591754922]
+color = Color(1, 1, 0.5647059, 1)
+polygon = PackedVector2Array(643, 655, 658, 655, 658, 630, 702, 630, 702, 591, 594, 591, 594, 629, 643, 629)
+
+[node name="Polygon2D" type="Polygon2D" parent="achievments/placa" unique_id=604076037]
+position = Vector2(2, 0)
+polygon = PackedVector2Array(598, 595, 695, 595, 695, 624, 598, 624)
+
+[node name="ferias" type="Label" parent="achievments/placa" unique_id=23079165]
+offset_left = 601.0
+offset_top = 600.0
+offset_right = 749.0
+offset_bottom = 623.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Closed for vacation"
+
+[node name="rightwall2" type="ColorRect" parent="." unique_id=274577135]
+offset_right = 20.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="rightwall2" unique_id=746087643]
+position = Vector2(0, -63.319153)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(6, 511.07547, 18, 496, 18, 507, 12, 516, 18, 522, 12, 523, 17, 531, 9, 534, 4, 543, 2, 532, 2, 519.05664)
+
+[node name="Polygon2D2" type="Polygon2D" parent="rightwall2" unique_id=1455804159]
+position = Vector2(-2, -34)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(17.734356, 530.0868, 9.638989, 547.5721, 7.038185, 536.884, 10.740136, 526.7205, 3.491634, 522.30927, 9.085078, 519.919, 2.33535, 513.328, 9.399216, 508.52158, 12.1295185, 498.59457, 16.673618, 508.8098, 19.733902, 521.38617)
+
+[node name="Polygon2D3" type="Polygon2D" parent="rightwall2" unique_id=178513676]
+position = Vector2(-3, 32)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(17.734356, 530.0868, 9.638989, 547.5721, 7.038185, 536.884, 10.740136, 526.7205, 3.491634, 522.30927, 9.085078, 519.919, 2.33535, 513.328, 9.399216, 508.52158, 11, 499.26416, 16.673618, 508.8098, 19.733902, 521.38617)
+
+[node name="ground" type="ColorRect" parent="." unique_id=1150236424]
+offset_top = 710.0
+offset_right = 1280.0
+offset_bottom = 750.0
+color = Color(0, 1, 0, 1)
+
+[node name="StoryNPC" parent="." unique_id=270998559 instance=ExtResource("2_u4bmn")]
+position = Vector2(-60, 485)
+
+[node name="TalkButton" type="Button" parent="StoryNPC" unique_id=10957452]
+offset_left = 121.0
+offset_top = -9.0
+offset_right = 168.0
+offset_bottom = 22.0
+text = "TALK"
+
+[node name="NameLabel" type="Label" parent="StoryNPC" unique_id=1587258393]
+visible = false
+offset_left = 104.0
+offset_top = 14.0
+offset_right = 181.0
+offset_bottom = 37.0
+text = "Name: ???"
+
+[node name="Player" parent="." unique_id=395803764 instance=ExtResource("3_ewg03")]
+position = Vector2(21, 665)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1195866661]
+
+[node name="KingdomDialogue" type="Panel" parent="CanvasLayer" unique_id=2047032279]
+visible = false
+offset_left = 151.0
+offset_top = 459.0
+offset_right = 151.0
+offset_bottom = 459.0
+
+[node name="QuestionLabel" type="Label" parent="CanvasLayer/KingdomDialogue" unique_id=1941307430]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Question1Button" type="Button" parent="CanvasLayer/KingdomDialogue" unique_id=319972065]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 143.0
+offset_right = 284.0
+offset_bottom = 174.0
+text = "Can you take me to the arena again?"
+
+[node name="Question2Button" type="Button" parent="CanvasLayer/KingdomDialogue" unique_id=1821214878]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 107.0
+offset_right = 187.0
+offset_bottom = 138.0
+text = "Who is the shopkeeper?"
+
+[node name="Question3Button" type="Button" parent="CanvasLayer/KingdomDialogue" unique_id=1760452025]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 35.0
+offset_right = 470.0
+offset_bottom = 66.0
+text = "So... what's the truth about this place you wanted to tell me?"
+
+[node name="Question4Button" type="Button" parent="CanvasLayer/KingdomDialogue" unique_id=2131649282]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 71.0
+offset_right = 383.0
+offset_bottom = 102.0
+text = "Why do you wear that mask? Are you a good guy?"
+
+[node name="AnswerLabel" type="Label" parent="CanvasLayer/KingdomDialogue" unique_id=949525538]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/KingdomDialogue" unique_id=877227749]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 218.0
+offset_right = 52.0
+offset_bottom = 249.0
+text = "CLOSE"
+
+[node name="GuardDialogue" type="Panel" parent="CanvasLayer" unique_id=1742527699]
+visible = false
+
+[node name="QuestionLabel" type="Label" parent="CanvasLayer/GuardDialogue" unique_id=1969460649]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 530.0
+offset_right = 1039.0
+offset_bottom = 553.0
+text = "What do you want to ask?"
+
+[node name="Question1Button2" type="Button" parent="CanvasLayer/GuardDialogue" unique_id=1441566562]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 574.0
+offset_right = 933.0
+offset_bottom = 605.0
+text = "Can I pass?"
+
+[node name="Question2Button2" type="Button" parent="CanvasLayer/GuardDialogue" unique_id=131533245]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 615.0
+offset_right = 1083.0
+offset_bottom = 646.0
+text = "Who is the guy with the mask?"
+
+[node name="CloseButton2" type="Button" parent="CanvasLayer/GuardDialogue" unique_id=1024312273]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 670.0
+offset_right = 898.0
+offset_bottom = 701.0
+text = "CLOSE"
+
+[node name="AnswerLabel" type="Label" parent="CanvasLayer/GuardDialogue" unique_id=1981792213]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 530.0
+offset_right = 750.0
+offset_bottom = 553.0
+
+[node name="GuardCube" parent="." unique_id=1540832770 instance=ExtResource("4_u4bmn")]
+position = Vector2(1120, 546)
+
+[node name="KingdomMusic" type="AudioStreamPlayer" parent="." unique_id=1292943978]
+stream = ExtResource("5_ewg03")
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/KingdomDialogue/Question1Button" to="." method="_on_question_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KingdomDialogue/Question2Button" to="." method="_on_question_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KingdomDialogue/Question3Button" to="." method="_on_question_3_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KingdomDialogue/Question4Button" to="." method="_on_question_4_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/KingdomDialogue/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GuardDialogue/Question1Button2" to="." method="_on_question_1_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/GuardDialogue/Question2Button2" to="." method="_on_question_2_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/GuardDialogue/CloseButton2" to="." method="_on_close_button_2_pressed"]
+[connection signal="finished" from="KingdomMusic" to="." method="_on_kingdom_music_finished"]

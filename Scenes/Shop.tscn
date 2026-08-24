@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xwr7g1577uv6" path="res://Scripts/shop.gd" id="1_lagin"]
 [ext_resource type="Script" uid="uid://dvia7ofq0nh0w" path="res://Scripts/seller.gd" id="3_i4qx4"]
+[ext_resource type="AudioStream" uid="uid://bmoc6i4e6fwlh" path="res://Audio/Music/ShopMusic.mp3.mp3" id="5_e5ji4"]
 [ext_resource type="PackedScene" uid="uid://bnxmugprhjnna" path="res://Scenes/player.tscn" id="5_r8bg4"]
 [ext_resource type="Texture2D" uid="uid://cfyxghlikdqgy" path="res://UI/button.png" id="6_m1c0q"]
 
@@ -230,8 +231,15 @@ offset_right = 942.0
 offset_bottom = 697.0
 text = "BACK"
 
+[node name="ShopMusic" type="AudioStreamPlayer" parent="." unique_id=1643459237]
+autoplay = true
+
+[node name="PurchaseSound" type="AudioStreamPlayer" parent="." unique_id=1727772362]
+stream = ExtResource("5_e5ji4")
+
 [connection signal="pressed" from="CanvasLayer/LeaveShopButton" to="." method="_on_leave_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeMenu/CoinMultiplierButton" to="." method="_on_coin_multiplier_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeMenu/ExtraHitButton" to="." method="_on_extra_hit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeMenu/LongerPowerButton" to="." method="_on_longer_power_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeMenu/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="finished" from="ShopMusic" to="." method="_on_shop_music_finished"]

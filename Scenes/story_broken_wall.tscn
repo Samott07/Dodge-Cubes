@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cphm6xhqapxog"]
+
+[node name="story_broken_wall" type="Node2D" unique_id=2120057692]
+
+[node name="rightwall2" type="ColorRect" parent="." unique_id=1453067429]
+offset_left = 1260.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.31426468, 0.16589037, 0.041016854, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="rightwall2" unique_id=1094260815]
+position = Vector2(0, -63.319153)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(6, 511.07547, 18, 496, 18, 507, 12, 516, 18, 522, 12, 523, 17, 531, 9, 534, 4, 543, 2, 532, 2, 519.05664)
+
+[node name="Polygon2D2" type="Polygon2D" parent="rightwall2" unique_id=249337]
+position = Vector2(-2, -34)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(17.734356, 530.0868, 9.638989, 547.5721, 7.038185, 536.884, 10.740136, 526.7205, 3.491634, 522.30927, 9.085078, 519.919, 2.33535, 513.328, 9.399216, 508.52158, 12.1295185, 498.59457, 16.673618, 508.8098, 19.733902, 521.38617)
+
+[node name="Polygon2D3" type="Polygon2D" parent="rightwall2" unique_id=639431147]
+position = Vector2(-3, 32)
+scale = Vector2(1, 1.1276596)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(17.734356, 530.0868, 9.638989, 547.5721, 7.038185, 536.884, 10.740136, 526.7205, 3.491634, 522.30927, 9.085078, 519.919, 2.33535, 513.328, 9.399216, 508.52158, 11, 499.26416, 16.673618, 508.8098, 19.733902, 521.38617)
